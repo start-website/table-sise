@@ -1,0 +1,151 @@
+.start {
+  padding: 20px;
+}
+
+.s-description {
+  color: #555;
+  font-size: 15px;
+  line-height: 19px;
+  margin: 0;
+}
+
+.start .important-message {
+  color: #888;
+  font-size: 13px;
+  font-family: inherit;
+  max-width: 800px;
+  margin-top: 30px;
+  line-height: 1.2;
+  font-style: italic;
+}
+
+.start .input-micro {
+  width: 35px !important;
+  max-width: 35px !important;
+  min-width: 35px !important;
+}
+
+.start .field .value .field-description {
+  display: none;
+  color: #888;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.start .field .value .field-description > p {
+  margin: 15px 0 5px 0;
+  font-family: inherit;
+}
+
+.start .field .value .field-description > h6 {
+  margin: 15px 0 0 0;
+}
+
+.start .field .value .field-description > ol li {
+  margin: 0 0 5px 0;
+}
+
+.start .field .value .field-description > ol {
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+
+.start .field .value .field-description > textarea {
+  height: auto;
+}
+
+.start .input-small {
+  width: 60px !important;
+  max-width: 60px !important;
+  min-width: 60px !important;
+}
+
+.start .input-middle {
+  width: 100px !important;
+  max-width: 100px !important;
+  min-width: 100px !important;
+}
+
+.start .text-result {
+  margin: 5px 0;
+}
+
+.start .input-large {
+  width: 400px !important;
+  max-width: 400px !important;
+  min-width: 400px !important;
+}
+
+.start .hint {
+  margin-top: 4px;
+}
+
+.start .hint-error {
+  color: #f00;
+  min-height: 12px;
+  min-width: 1px;
+  display: none;
+}
+
+.sliderStart__tabs-buttons {
+  margin-top: 50px;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.sliderStart__tab-button {
+  list-style-type: none;
+  display: inline-block;
+  border-bottom: 2px solid #ccc;
+  padding: 5px 40px;
+  color: #ccc;
+  cursor: pointer;
+  margin-right: -5px;
+  margin-bottom: 30px;
+}
+
+.sliderStart__tab-button:hover {
+  border-bottom: 2px solid #000;
+  color: #000;
+  transition: color 0.5s ease, border-bottom 0.5s ease;
+}
+
+.sliderStart__tab-button_active {
+  border-bottom: 2px solid #000;
+  color: #000;
+}
+
+.sliderStart__addtab-button {
+  list-style-type: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.sliderStart__deltab-button {
+  list-style-type: none;
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.sliderStart__tab-content {
+  position: absolute;
+  left: -9000px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.sliderStart__tab-content_active {
+  position: relative;
+  left: 0;
+  opacity: 1;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.transparent-sprite {
+  max-width: 300px;
+  width: 100%;
+}
