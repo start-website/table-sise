@@ -53,7 +53,7 @@ body {
  */
 .startwebsite-table-active {
     .startwebsite-chosesize__modal {
-        width: calc(100% - 110px);
+        width: calc(100% - 40px);
         padding: 30px 30px 40px 30px;
         margin: 20px;
         height: auto;
@@ -112,6 +112,7 @@ body {
     text-align: center;
     min-width: 320px;
     opacity: 0;
+    font-size: 0;
 
     &:before {
         display: inline-block;
@@ -143,6 +144,7 @@ body {
         opacity: 0;
         filter: blur(10px);
         transition: opacity 0.6s ease, filter 0.6s ease, width 0.1s ease-in-out;
+        font-size: 13px;
     }
 
     // .startwebsite-chosesize__content
@@ -363,11 +365,18 @@ body {
 
             & input {
                 width: calc(100% - 22px);
+                @media (max-width: 500px) {
+                    width: 100%;
+                    max-width: auto;
+                }
             }
 
             & textarea {
                 min-height: 100px;
                 width: calc(100% - 22px);
+                @media (max-width: 500px) {
+                    width: 100%;
+                }
             }
 
             & > button {

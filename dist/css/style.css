@@ -43,7 +43,7 @@ body {
  */
 
 .startwebsite-table-active .startwebsite-chosesize__modal {
-  width: calc(100% - 110px);
+  width: calc(100% - 40px);
   padding: 30px 30px 40px 30px;
   margin: 20px;
   height: auto;
@@ -102,6 +102,7 @@ body {
   text-align: center;
   min-width: 320px;
   opacity: 0;
+  font-size: 0;
 }
 
 .startwebsite-chosesize:before {
@@ -454,6 +455,15 @@ body {
 
 @media (max-width: 500px) {
   .startwebsite-chosesize__answer > form input[type="submit"] {
+    width: 100%;
+  }
+
+  .startwebsite-chosesize__answer > form input {
+    width: 100%;
+    max-width: auto;
+  }
+
+  .startwebsite-chosesize__answer > form textarea {
     width: 100%;
   }
 }
