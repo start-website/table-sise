@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,35 +11,22 @@
     <title>Table size</title>
 
     <style>
-        .header-content {
-            padding: 60px 0;
+        body {
+            font-family: "Open Sans", sans-serif;
         }
-
-        .h1 {
+        h2 {
             text-align: center;
+            margin: 20px 0 40px 0;
         }
-
-        .bread-crumbs {
-            margin-top: 10px;
+        .version {
+            text-align: center;
+            color: #ccc;
+            font-size: 12px;
         }
-
-        .product__content {
-            padding: 10px;
+        .buttons .btn {
+            margin: 4px 2px;
         }
-
-        .product__info {
-            background-color: #dee2e6;
-            padding: 20px;
-        }
-
-        .list {
-            padding-left: 0;
-        }
-
-        .item {
-            list-style-type: none;
-        }
-
+        
         .table-size-link {}
 
         .version {
@@ -52,6 +39,7 @@
 
 <body>
     <div class="startwebsite-chosesize">
+        <div class="startwebsite-chosesize__bg"></div>
         <div class="startwebsite-chosesize__modal">
             <div class="startwebsite-chosesize__header">
                 <div class="startwebsite-chosesize__title">
@@ -127,140 +115,26 @@
         </div>
     </div>
 
-
     <header class="mt-3">
         <div class="container">
-            <div class="header-content border border-secondary">
-                <h1 class="h1">Table size example</h1>
-                <div class="version"><b>Version: 2.0.1</b></div>
+            <div class="border border-secondary" style="padding: 50px 0; text-align: center;">
+                <h1 class="h1">Table size examples</h1>
+                <div class="version"><b>Version: 2.1.0</b></div>
             </div>
         </div>
     </header>
 
-    <div class="bread-crumbs mt-3 mb-3">
+    <div class="mt-3">
         <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Category</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Product</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-
-    <div class="product">
-        <div class="container">
-            <div class="product__content border border-secondary">
-                <div class="row">
-                    <div class="col-12 col-lg-8">
-                        <div class="product__gallery border rounded mb-2">
-                            <img src="./images/product.jpg" alt="product" class="rounded mx-auto d-block img-fluid">
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-4">
-                        <div class="product__info rounded">
-                            <h2 class="h2">Product name</h2>
-                            <p>Product description</p>
-                            <p><strong>10.000</strong></p>
-                            <select>
-                                <option value="42/46">42/46</option>
-                                <option value="48/52">48/52</option>
-                                <option value="50/52">50/52</option>
-                                <option value="53/58">53/58</option>
-                                <option value="60/64">60/64</option>
-                            </select>
-                            <div
-                                class="mt-3 mb-3 animate__animated animate__headShake animate__delay-1s animate__rediveat-2">
-                                <div class="startwebsite__table-size">
-                                    <span class="startwebsite__table-size_icon startwebsite-icon-ruler"></span>
-                                    <a href="#" class="startwebsite__table-size_link">Table size</a>
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-primary">Add to cart</button>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="product__description mt-3">
-                            <ul class="nav nav-tabs" id="myTab" role="tabitem">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                        aria-controls="home" aria-selected="true">Description</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                        aria-controls="profile" aria-selected="false">Specifications</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel"
-                                    aria-labelledby="home-tab">
-                                    <p class="p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis et
-                                        dicta molestiae
-                                        esse animi perspiciatis laudantium explicabo magnam minima? Expedita vitae
-                                        explicabo modi molestiae
-                                        quibusdam ut. Fugiat architecto quae sapiente!Voluptas blanditiis veritatis
-                                        quibusdam fuga omnis.
-                                        Odit beatae libero neque dolorum. Molestiae necessitatibus quidem temporibus
-                                        odio corrupti pariatur
-                                        in obcaecati nulla voluptates quae nobis neque harum beatae, porro quaerat
-                                        praesentium.</p>
-                                </div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <p class="p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis et
-                                        dicta molestiae
-                                        esse animi perspiciatis laudantium explicabo magnam minima? Expedita vitae
-                                        explicabo modi molestiae
-                                        quibusdam ut. Fugiat architecto quae sapiente!Voluptas blanditiis veritatis
-                                        quibusdam fuga omnis.
-                                        Odit beatae libero neque dolorum. Molestiae necessitatibus quidem temporibus
-                                        odio corrupti pariatur
-                                        in obcaecati nulla voluptates quae nobis neque harum beatae, porro quaerat
-                                        praesentium.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="site-content border border-secondary p-3">
+                <h2>Click to open popup</h2>
+                <div class="buttons" style="text-align: center;">
+                    <button id="popup1" type="button" class="btn btn-primary">Table size demo</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="mt-3 pb-3">
-        <div class="container">
-            <div class="footer__content border border-secondary p-3">
-                <div class="row">
-                    <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-                        <h4 class="h4">Name</h4>
-                        <ul class="list">
-                            <li class="item"><a href="#">Link</a></li>
-                            <li class="item"><a href="#">Link</a></li>
-                            <li class="item"><a href="#">Link</a></li>
-                            <li class="item"><a href="#">Link</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-                        <h4 class="h4">Name</h4>
-                        <ul class="list">
-                            <li class="item"><a href="#">Link</a></li>
-                            <li class="item"><a href="#">Link</a></li>
-                            <li class="item"><a href="#">Link</a></li>
-                            <li class="item"><a href="#">Link</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-sm-4 col-md-4 col-lg-4">
-                        <h4 class="h4">Name</h4>
-                        <ul class="list">
-                            <li class="item"><a href="#">Link</a></li>
-                            <li class="item"><a href="#">Link</a></li>
-                            <li class="item"><a href="#">Link</a></li>
-                            <li class="item"><a href="#">Link</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/scripts.js"></script>

@@ -3,46 +3,56 @@ window.addEventListener('load', function () {
         this.tableSize = document.querySelector(props.tableSizeSelector);
         this.tableLink = document.querySelector(props.tableLinkSelector);
         this.body = document.querySelector('body');
-        this.textColor = props.textColor;
-        this.borderColor = props.borderColor;
+        this.maxWidth = Number(props.maxWidth);
+        this.borderRadius = props.borderRadius;
 
         this.buttonText = props.buttonText;
-
-        this.buttonTextColor = props.buttonTextColor;
-        this.buttonBackgroundColor = props.buttonBackgroundColor;
+        this.buttonClass = props.buttonClass;
 
         this.tableContent = props.tableContent;
         this.columnAccent = parseInt(props.columnAccent, 10) - 1;
 
-        this.tableHoverColor = props.tableHoverColor;
-
         this.tableDescription = props.tableDescription;
         this.tableForm = props.tableForm;
         this.infoContentCollapse = props.infoContentCollapse;
+        this.colorTheme = props.colorTheme;
 
         this.tableOpen = () => {
             this.tableLink.addEventListener('click', () => {
-                this.tableSize.className += ' startwebsite-table-active';
                 this.body.style.overflow = 'hidden';
+
+                if (this.tableSize.className.match(/hide/gi)) {
+                    const popupClassWithActive = this.tableSize.className.replace(/hide/gi, 'active');
+                    this.tableSize.className = popupClassWithActive;
+                } else {
+                    this.tableSize.className += ' active';
+                }
+
+                this._changeWidthTableContent();
             })
         }
 
         this.tableClose = () => {
-            const disableTable = () => {
-                this.tableSize.className = 'startwebsite-chosesize';
-                this.body.style.overflow = '';
-            }
+            this.tableSize.addEventListener('click', (e) => {
+                if (e.target.className && /startwebsite-chosesize__close_icon|startwebsite-chosesize__bg/.test(e.target.className)) {
+                    const popupClassWithOutActive = this.tableSize.className.replace(/(\s|)active/gi, '');
 
-            this.tableSize.addEventListener('click', () => {
-                disableTable();
-            }, false);
+                    this.tableSize.className += ' hide';
 
-            document.querySelector('.startwebsite-chosesize__close_icon').addEventListener('click', () => {
-                disableTable();
-            })
+                    const popupRemoveActiveClass = () => {
+                        this.tableSize.className = 'startwebsite-chosesize';
+                        this.body.style.overflow = '';
+                        this.tableSize.removeEventListener('transitionend', popupRemoveActiveClass);
+                    }
+        
+                    this.tableSize.addEventListener('transitionend', popupRemoveActiveClass);
 
-            document.querySelector('.startwebsite-chosesize__modal').addEventListener('click', (e) => {
-                e.stopPropagation();
+                    /* fallback for older browsers */
+                    setTimeout(() => {
+                        popupRemoveActiveClass();
+                    }, 1000);
+                }
+                
             })
         }
 
@@ -81,12 +91,29 @@ window.addEventListener('load', function () {
                 tableQuestionTextArray = document.querySelectorAll('.startwebsite-chosesize__question_text'),
                 tableAnswerBlockArray = document.querySelectorAll('.startwebsite-chosesize__answer');
 
-            this.tableSize.style.color = this.textColor;
-            headerTable.style.borderColor = this.borderColor;
+            const modalBG = document.querySelector('.startwebsite-chosesize__bg');
+            const modal = document.querySelector('.startwebsite-chosesize__modal');
+            const modalRows = document.querySelectorAll('.startwebsite-chosesize__tr');
 
-            for (let i = 0; i < tableQuestionTextArray.length; i++) {
-                tableQuestionTextArray[i].style.borderColor = this.borderColor;
-            }
+            if (this.colorTheme.popupBackgroundColor) modalBG.style.backgroundColor = this.colorTheme.popupBackgroundColor;
+            if (this.colorTheme.popupBackgroundOpacity) modalBG.style.opacity = this.colorTheme.popupBackgroundOpacity;
+            if (this.colorTheme.modalBackgroundColor) {
+                modal.style.backgroundColor = this.colorTheme.modalBackgroundColor;
+                modal.style.borderColor = this.colorTheme.modalBackgroundColor;
+            } 
+
+            if (this.colorTheme.modalBackgroundImage) modal.style.background = `url('${this.colorTheme.modalBackgroundImage}') no-repeat center/cover`;
+
+            if (this.colorTheme.basicColor) this.tableSize.style.color = this.colorTheme.basicColor;
+            if (this.colorTheme.borderColor) {
+                headerTable.style.borderColor = this.colorTheme.borderColor;
+                modalRows.forEach((elem) => {
+                    elem.style.borderColor = this.colorTheme.borderColor;
+                })
+                tableQuestionTextArray.forEach((elem) => {
+                    elem.style.borderColor = this.colorTheme.borderColor;
+                })
+            } 
 
             const setBoxShadow = (elem) => {
                 function hexToRGBA(h) {
@@ -107,7 +134,7 @@ window.addEventListener('load', function () {
 
                     return "rgba(" + +r + "," + +g + "," + +b + ", 0.25)";
                 }
-                const rgba = hexToRGBA(this.textColor);
+                const rgba = hexToRGBA(this.colorTheme.formFieldBackground);
                 elem.addEventListener('focus', () => {
                     elem.style.boxShadow = `0 0 0 3px ${rgba}`;
                 });
@@ -120,36 +147,21 @@ window.addEventListener('load', function () {
                 elems.forEach((elem) => {
                     if (elem.tagName === 'INPUT') {
                         const inputForm = elem;
-                        if (inputForm.type !== 'hidden' && inputForm.type !== 'checkbox') {
-                            inputForm.style.borderColor = this.textColor;
-                            inputForm.style.color = this.textColor;
+                        if (inputForm.type !== 'hidden' && !/checbox|submit/.test(inputForm.type)) {
+                            if (this.colorTheme.formTextColor) inputForm.style.color = this.colorTheme.formTextColor;
+                            if (this.colorTheme.borderColor) inputForm.style.borderColor = this.colorTheme.borderColor;
                             setBoxShadow(inputForm);
+                        }
+                        if (elem.type === 'submit') {
+                            const buttonSubmit = elem;
+                            if (this.buttonText) buttonSubmit.value = this.buttonText;
+                            if (this.buttonClass) buttonSubmit.className = this.buttonClass;
                         }
                     } else if (elem.tagName === 'TEXTAREA') {
                         const textareaForm = elem;
-                        textareaForm.style.borderColor = this.textColor;
-                        textareaForm.style.color = this.textColor;
+                        if (this.colorTheme.formTextColor) textareaForm.style.color = this.colorTheme.formTextColor;
+                        if (this.colorTheme.borderColor) textareaForm.style.borderColor = this.colorTheme.borderColor;
                         setBoxShadow(textareaForm);
-                    } else if (elem.tagName === 'BUTTON') {
-                        const button = elem;
-                        if (this.buttonText) button.innerHTML = this.buttonText;
-                        if (this.buttonTextColor) {
-                            button.style.color = this.buttonTextColor;
-                        }
-                        if (this.buttonBackgroundColor) {
-                            button.style.backgroundColor = this.buttonBackgroundColor;
-                            button.style.border = `4px double ${this.buttonBackgroundColor}`;
-                            button.addEventListener('mouseover', () => {
-                                button.style.backgroundColor = 'transparent';
-                                button.style.color = this.buttonBackgroundColor;
-                                button.style.border = `4px double ${this.buttonBackgroundColor}`;
-                            });
-                            button.addEventListener('mouseout', () => {
-                                button.style.color = this.buttonTextColor ? this.buttonTextColor : '#fff';
-                                button.style.backgroundColor = this.buttonBackgroundColor;
-                                button.style.border = `4px double ${this.buttonBackgroundColor}`;
-                            });
-                        }
                     } else {
                         findElem(elem.childNodes);
                     }
@@ -219,20 +231,16 @@ window.addEventListener('load', function () {
         }
 
         this.setTableHover = () => {
-            const tableColumnArray = document.querySelectorAll('.startwebsite-chosesize__td');
+            const tableColumnArray = document.querySelectorAll('.startwebsite-chosesize__tr');
 
             for (let i = 0; i < tableColumnArray.length; i++) {
                 tableColumnArray[i].addEventListener('mouseover', () => {
-                    tableColumnArray[i].parentNode.childNodes.forEach(elem => {
-                        elem.style.backgroundColor = this.tableHoverColor;
-                    })
-                });
-                tableColumnArray[i].addEventListener('mouseout', () => {
-                    tableColumnArray[i].parentNode.childNodes.forEach(elem => {
-                        elem.style.backgroundColor = '';
-                    })
-                });
+                    tableColumnArray[i].style.backgroundColor = this.colorTheme.hover;
+                })
 
+                tableColumnArray[i].addEventListener('mouseout', () => {
+                    tableColumnArray[i].style.backgroundColor = '';
+                })
             }
         }
 
@@ -298,35 +306,89 @@ window.addEventListener('load', function () {
             }
         }
 
+        this._changeWidthTableContent = () => {
+            const tableHeader = document.querySelector('.startwebsite-chosesize__tr_header');
+            const tableRows = document.querySelectorAll('.startwebsite-chosesize__tr');
+            const tableContent = document.querySelector('.startwebsite-chosesize__table-content');
+
+            let widthTableContent = 0;
+
+            tableHeader.children.forEach((child) => {
+                widthTableContent += child.offsetWidth;
+            })
+
+            const setWidth = () => {
+                for (let i = 0; i < tableRows.length; i++) {
+                    tableRows[i].style.width = widthTableContent + 'px';
+                }
+            }
+
+            const removeWidth = () => {
+                for (let i = 0; i < tableRows.length; i++) {
+                    tableRows[i].style.width = '';
+                }
+            }
+
+            if ((widthTableContent + 100) > tableContent.clientWidth) {
+                setWidth();
+            } else {
+                removeWidth();
+            }
+            
+            window.addEventListener('resize', () => {
+                if ((widthTableContent + 100) > tableContent.offsetWidth) {
+                    setWidth();
+                } else {
+                    removeWidth();
+                }
+            })
+
+        }
+
         this.active = function () {
             this.tableOpen();
             this.tableClose();
             if (this.infoContentCollapse) this.questionSwitch();
-            if (this.textColor || this.borderColor || this.buttonText || this.buttonTextColor || this.buttonBackgroundColor) this.setColor();
             if (this.tableContent) this.setInfoContent();
+            this.setColor();
             if (!this.tableDescription || !this.tableForm) this.delQuestions();
-            if (this.tableHoverColor) this.setTableHover();
+            if (this.colorTheme.hover) this.setTableHover();
             if (this.infoContentCollapse) this.collapseContent();
             if (this.tableForm) this.setAJAXform();
         }
+
+        if (this.tableLink) {
+            this.tableLink.style.display = '';
+            const modal = document.querySelector('.startwebsite-chosesize__modal');
+            if (this.maxWidth) modal.style.maxWidth = this.maxWidth + 'px';
+            if (this.borderRadius) modal.style.borderRadius = '4px';
+            this.active();
+        }
     }
 
-    let webasystTableSize = new StartWebSiteTableSize({
+    new StartWebSiteTableSize({
         tableSizeSelector: '.startwebsite-chosesize',
-        tableLinkSelector: '.startwebsite__table-size',
-        textColor: '', // Only hex format
-        borderColor: '',
+        tableLinkSelector: '#popup1',
+        maxWidth: '900',
+        borderRadius: true,
+        colorTheme: {
+            basicColor: '',
+            hover: 'lightcyan',
+            popupBackgroundColor: '',
+            popupBackgroundOpacity: '',
+            modalBackgroundColor: '',
+            modalBackgroundImage: '',//./images/4.jpg
+            formTextColor: '',
+            formFieldBackground: '',// only hex format
+            borderColor: ''
+        },
         buttonText: 'Send',
-        buttonTextColor: '',
-        buttonBackgroundColor: '',
-        tableContent: 'heading 1, heading 2, heading 3, heading 4, heading 5; item 1, item 2, item 3, item 4, item 5; item 6, item 7, item 8, item 9, item 10;', // 
+        buttonClass: 'bg-primary text-white',
+        tableContent: 'heading 1, heading 2, heading 3, heading 4, heading 5; item 1, item 2, item 3, item 4, item 5; item 6, item 7, item 8, item 9, item 10;  item 11, item 12, item 13, item 14, item 15; item 16, item 17, item 18, item 19, item 20; item 21, item 22, item 23, item 24, item 25;', // 
         columnAccent: '1',
-        tableHoverColor: 'LightCyan',
         tableDescription: true,
         tableForm: true,
-        infoContentCollapse: true
+        infoContentCollapse: false
     });
-
-    webasystTableSize.active();
 
 })
