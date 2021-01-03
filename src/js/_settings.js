@@ -1,287 +1,177 @@
-function checkboxChange() {
-	const inputsCheckbox = document.querySelectorAll('input[type="checkbox"]');
-	let inputName;
-	for (let i = 0; i < inputsCheckbox.length; i++) {
-		inputsCheckbox[i].addEventListener('change', function () {
-			inputsCheckbox[i].parentElement.parentElement.childNodes.forEach(function (elem) {
-				if (elem.tagName === 'LABEL') {
-					if (elem.firstChild.hasAttribute('checked')) {
-						inputName = elem.firstChild.getAttribute('name');
-					}
-					elem.firstChild.checked = false;
-					elem.firstChild.removeAttribute('checked');
-					elem.firstChild.setAttribute('name', 'option');
-				}
-			})
-			this.setAttribute('checked', '');
-			this.checked = true;
-			this.setAttribute('name', inputName);
-		})
-	}
-}
+var app = new Vue({
+    delimiters: ['%%', '%%'],
+    el: '.start',
+    data: {
+        table_count: Number(document.querySelector('#table_count').value),
+        custom_css: document.querySelector('#custom_css').value,
+        plugin_url: document.querySelector('#plugin_url').value,
+        custom_css_instruction: false,
+        categoryArr: [],
+        selected_tab: 0,
+        group_settings: [],
+        block_1_id: 0,
+        block_2_id: 1,
+        set_product_page: document.querySelector('#set_product_page').value,
+        info_content_collapse: document.querySelector('#info_content_collapse').value,
+        table_description: document.querySelector('#table_description').value,
+        round_corners: document.querySelector('#round_corners').value,
+        modal_width: document.querySelector('#modal_width').value,
+        text_color: document.querySelector('#text_color').value,
+        border_color: document.querySelector('#border_color').value,
+        modal_color: document.querySelector('#modal_color').value,
+        popup_background_color: document.querySelector('#popup_background_color').value,
+        popup_background_opacity: document.querySelector('#popup_background_opacity').value,
+        column_accent: document.querySelector('#column_accent').value,
+        table_hover_color: document.querySelector('#table_hover_color').value,
+        table_form: document.querySelector('#table_form').value,
+        settings_table_form: false,
+        privacy_link: document.querySelector('#privacy_link').value,
+        modal_background_image_file: document.querySelector('#modal_background_image_file').value,
+        form_text_color: document.querySelector('#form_text_color').value,
+        form_field_background: document.querySelector('#form_field_background').value,
+        button_text: document.querySelector('#button_text').value,
+        button_class: document.querySelector('#button_class').value,
+        form_response: document.querySelector('#form_response').value,
+        form_name_show: document.querySelector('#form_name_show').value,
+        form_name_required: document.querySelector('#form_name_required').value,
+        form_email_show: document.querySelector('#form_email_show').value,
+        form_email_required: document.querySelector('#form_email_required').value,
+        form_tel_show: document.querySelector('#form_tel_show').value,
+        form_tel_required: document.querySelector('#form_tel_required').value,
+        form_message_show: document.querySelector('#form_message_show').value,
+        form_message_required: document.querySelector('#form_message_required').value,
+    },
+    methods: {
+        addBlock() {
+            this.table_count++;
+            this.group_settings.push({
+                table_name: '',
+                category_name: '—',
+                filter_characteristic_1: '—',
+                filter_characteristic_2: '—',
+                filter_characteristic_3: '—',
+                table_content: '',
+                table_description: '',
+            })
+        },
+        delBlock() {
+            if (this.table_count > 1) {
+                this.table_count--;
+                this.group_settings.pop();
+            }
+        },
+        checkHexFormat(e) {
+            const input = e.target;
+            const inputBlockChilds = input.parentElement.parentElement.children;
+            const buttonSubmit = document.querySelector('.buttom-sumbit');
+            const hexRegexp = /^#([\da-f]{3}){1,2}$/i;
 
-function checkInputs() {
-	const inputArray = document.querySelectorAll('input');
-	const inputSumbit = document.querySelector('input[type="submit"]');
-	const inputPrivacyLink = document.querySelector('input[name="shop_start_table_size[privacy_link]"]');
-	let messageError;
-	let elemFieldDesc;
+            let hintError;
+    
+            for (let i = 0; i < inputBlockChilds.length; i++) {
+                const elem = inputBlockChilds[i];
+  
+                if (elem.className && elem.className.match(/hint-error/gi)) {
+                    hintError = elem;
+                }
+            }
 
-	for (let i = 0; i < inputArray.length; i++) {
-		switch (inputArray[i].name) {
-			case 'shop_start_table_size[text_color]':
-				inputArray[i].addEventListener('change', function () {
-					inputArray[i].parentElement.parentElement.childNodes.forEach(function (elem) {
-						if (/hint-error/gi.test(elem.className)) messageError = elem;
-					})
-					if (!/^#([\da-f]{3}){1,2}$/i.test(inputArray[i].value) && inputArray[i].value !== '') {
-						messageError.style.display = 'block';
-						inputSumbit.disabled = true;
-					} else {
-						messageError.style.display = '';
-						inputSumbit.disabled = false;
-					}
-				})
-				break;
-			case 'shop_start_table_size[set_product_page]':
-				inputArray[i].addEventListener('change', function () {
-					inputArray[i].parentElement.parentElement.childNodes.forEach(function (elem) {
-						if (/field-description/gi.test(elem.className)) elemFieldDesc = elem;
-					})
-					if (inputArray[i].value == 'false') {
-						elemFieldDesc.style.display = 'block';
-					} else {
-						elemFieldDesc.style.display = '';
-					}
-				})
-				break;
-			case 'shop_start_table_size[table_form]':
-				inputArray[i].addEventListener('change', function () {
-					inputArray[i].parentElement.parentElement.childNodes.forEach(function (elem) {
-						if (/field-description/gi.test(elem.className)) elemFieldDesc = elem;
-					})
-					if (inputArray[i].value == 'true') {
-						elemFieldDesc.style.display = 'block';
-					} else {
-						elemFieldDesc.style.display = '';
-						inputPrivacyLink.value = '';
-					}
-				})
-				break;
-		}
-	}
-}
+            if (!hexRegexp.test(e.target.value) && e.target.value != '') {
+                hintError.style.display = 'block';
+                buttonSubmit.disabled = true;
+            } else {
+                hintError.style.display = '';
+                buttonSubmit.disabled = false;
+            }
+        },
+        pageReload() {
+            setTimeout(function () {
+                window.location.reload();
+            }, 1000)
+        },
+        setValueInInputHidden(e) {
+            let inputHidden = e.target.parentElement.children[0];
+            if (e.target.checked === true) {
+                inputHidden.value = true;
+            } else {
+                inputHidden.value = false;
+            }
+        },
+        checkImage(e) {
+            const input = e.target;
+            const buttonSubmit = document.querySelector('.buttom-sumbit');
+            const inputBlockChilds = input.parentElement.parentElement.children;
+            let hintError;
+            let regex = /(png|jpe?g|gif|svg|webp)$/i;
+    
+            for (let i = 0; i < inputBlockChilds.length; i++) {
+                const elem = inputBlockChilds[i];
+  
+                if (elem.className && elem.className.match(/hint-error/gi)) {
+                    hintError = elem;
+                }
+            }
+  
+            if (!regex.test(input.value)) {
+                hintError.style.display = 'block';
+                buttonSubmit.disabled = true;
+            } else {
+                hintError.style.display = '';
+                buttonSubmit.disabled = false;
+            }
+        },
+        returnDefaultModalImageInputFileName(e) {
+            e.target.name = 'shop_start_table_size[modal_background_image_file]';
+  
+            const inputText = document.querySelector('#modal_background_image_input_text');
+            inputText.name = '';
+            inputText.value = '';
+        },
+        delModalImage(e) {
+            const inputFile = document.querySelector('#modal_background_image_input_file');
+            const inputText = document.querySelector('#modal_background_image_input_text');
 
-function tabsSwitch() {
-	const tabs = document.querySelector('.start-tabs').children,
-		tabsContent = document.querySelector('.start-tab-content').children;
-
-	function disableTabContent() {
-		for (let i = 0; i < tabs.length; i++) {
-			tabsContent[i].style.display = 'none';
-			tabs[i].className = '';
-		}
-	}
-
-	for (let i = 0; i < tabs.length; i++) {
-		tabs[i].addEventListener('click', () => {
-			disableTabContent();
-			tabsContent[i].style.display = 'block';
-			tabs[i].className = 'selected';
-		})
-	}
-}
-
-function changeTable() {
-	const buttonAdd = document.querySelector('.start-table-button-add'),
-		buttonDel = document.querySelector('.start-table-button-del'),
-		tableContentSettings = document.querySelector('.start-table-content');
-
-	const tableCount = document.querySelector('.start-table-size-count');
-
-	let tableCountValue = parseInt(tableCount.value);
-	const tableName = document.querySelector('.start-table-name').innerText.replace(/\d/g, '');
-
-	const fieldCategoryName = document.querySelector('.category-name').innerText.replace(/\n/g, ''),
-		selectContentCategory = document.querySelector('.select-category').children,
-		fieldCategoryHintContent = document.querySelector('.category-hint').innerText;
-
-	const fieldBrandName = document.querySelector('.brand-name').innerText.replace(/\n/g, ''),
-		selectContentBrand = document.querySelector('.select-brand').children,
-		fieldBrandHintContent = document.querySelector('.brand-hint').innerText;
-
-	const fieldContentTableName = document.querySelector('.content-table-name').innerText.replace(/\n/g, ''),
-		fieldContentTableHintContent = document.querySelector('.content-table-hint').innerHTML;
-
-	const fieldDescriptionTableName = document.querySelector('.content-description-name').innerText.replace(/\n/g, ''),
-		fieldDescriptionTableHintContent = document.querySelector('.content-description-hint').innerHTML;
-
-	function createTable() {
-		let tagTableWrap = document.createElement('div');
-		tagTableWrap.className = 'start-table';
-		tableContentSettings.appendChild(tagTableWrap);
-
-		let tagTableId = document.createElement('input');
-		tagTableId.type = 'hidden';
-		tagTableId.name = `shop_start_table_size[id_table_${tableCountValue}]`;
-		tagTableId.value = tableCountValue;
-		tagTableWrap.appendChild(tagTableId);
-
-		let tagTableName = document.createElement('h6');
-		tagTableName.className = 'start-table-name';
-		tagTableName.innerText = tableName + tableCountValue;
-		tagTableWrap.appendChild(tagTableName);
-
-		// field
-		let tagFieldCategory = document.createElement('div');
-		tagFieldCategory.className = 'field';
-		tagTableWrap.appendChild(tagFieldCategory);
-
-		let tagNameCategory = document.createElement('div');
-		tagNameCategory.className = 'name';
-		tagNameCategory.innerText = fieldCategoryName;
-		tagFieldCategory.appendChild(tagNameCategory);
-
-		let tagValueCategory = document.createElement('div');
-		tagValueCategory.className = 'value';
-		tagFieldCategory.appendChild(tagValueCategory);
-
-		let tagLabelCategory = document.createElement('label');
-		tagValueCategory.appendChild(tagLabelCategory);
-
-		let tagSelectCategory = document.createElement('select');
-		tagSelectCategory.name = `shop_start_table_size[category_name_${tableCountValue}]`;
-		tagLabelCategory.appendChild(tagSelectCategory);
-
-		for (let i = 0; i < selectContentCategory.length; i++) {
-			if (!selectContentCategory[i].className.match(/from-database/gi)) {
-				let tagOptionCategory = document.createElement('option');
-				tagOptionCategory.value = selectContentCategory[i].value;
-				tagOptionCategory.innerText = selectContentCategory[i].innerText;
-				tagSelectCategory.appendChild(tagOptionCategory);
-			}
-		}
-
-		let tagHintCategory = document.createElement('div');
-		tagHintCategory.className = 'hint';
-		tagHintCategory.innerHTML = fieldCategoryHintContent;
-		tagValueCategory.appendChild(tagHintCategory);
-
-		// filed 2
-		let tagFieldbrand = document.createElement('div');
-		tagFieldbrand.className = 'field';
-		tagTableWrap.appendChild(tagFieldbrand);
-
-		let tagNameBrand = document.createElement('div');
-		tagNameBrand.className = 'name';
-		tagNameBrand.innerText = fieldBrandName;
-		tagFieldbrand.appendChild(tagNameBrand);
-
-		let tagValueBrand = document.createElement('div');
-		tagValueBrand.className = 'value';
-		tagFieldbrand.appendChild(tagValueBrand);
-
-		let tagLabelBrand = document.createElement('label');
-		tagValueBrand.appendChild(tagLabelBrand);
-
-		let tagSelectBrand = document.createElement('select');
-		tagSelectBrand.name = `shop_start_table_size[brand_name_${tableCountValue}]`;
-		tagLabelBrand.appendChild(tagSelectBrand);
-
-		for (let i = 0; i < selectContentBrand.length; i++) {
-			if (!selectContentBrand[i].className.match(/from-database/gi)) {
-				let tagOptionBrand = document.createElement('option');
-				tagOptionBrand.value = selectContentBrand[i].value;
-				tagOptionBrand.innerText = selectContentBrand[i].innerText;
-				tagSelectBrand.appendChild(tagOptionBrand);
-			}
-			
-		}
-
-		let tagHintBrand = document.createElement('div');
-		tagHintBrand.className = 'hint';
-		tagHintBrand.innerHTML = fieldBrandHintContent;
-		tagValueBrand.appendChild(tagHintBrand);
-
-		// field 3
-		let tagFieldContentTable = document.createElement('div');
-		tagFieldContentTable.className = 'field';
-		tagTableWrap.appendChild(tagFieldContentTable);
-
-		let tagNameContentTable = document.createElement('div');
-		tagNameContentTable.className = 'name';
-		tagNameContentTable.innerText = fieldContentTableName;
-		tagFieldContentTable.appendChild(tagNameContentTable);
-
-		let tagValueContentTable = document.createElement('div');
-		tagValueContentTable.className = 'value';
-		tagFieldContentTable.appendChild(tagValueContentTable);
-
-		let tagLabelContentTable = document.createElement('label');
-		tagValueContentTable.appendChild(tagLabelContentTable);
-
-		let tagTextareaContentTable = document.createElement('textarea');
-		tagTextareaContentTable.setAttribute('rows', 8);
-		tagTextareaContentTable.name = `shop_start_table_size[table_content_${tableCountValue}]`;
-		tagLabelContentTable.appendChild(tagTextareaContentTable);
-
-		let tagHintContentTable = document.createElement('div');
-		tagHintContentTable.className = 'hint';
-		tagHintContentTable.innerHTML = fieldContentTableHintContent;
-		tagValueContentTable.appendChild(tagHintContentTable);
-
-		// field 3
-		let tagFieldContentDescription = document.createElement('div');
-		tagFieldContentDescription.className = 'field';
-		tagTableWrap.appendChild(tagFieldContentDescription);
-
-		let tagNameContentDescription = document.createElement('div');
-		tagNameContentDescription.className = 'name';
-		tagNameContentDescription.innerText = fieldDescriptionTableName;
-		tagFieldContentDescription.appendChild(tagNameContentDescription);
-
-		let tagValueContentDescription = document.createElement('div');
-		tagValueContentDescription.className = 'value';
-		tagFieldContentDescription.appendChild(tagValueContentDescription);
-
-		let tagLabelContentDescription = document.createElement('label');
-		tagValueContentDescription.appendChild(tagLabelContentDescription);
-
-		let tagTextareaContentDescription = document.createElement('textarea');
-		tagTextareaContentDescription.setAttribute('rows', 8);
-		tagTextareaContentDescription.name = `shop_start_table_size[table_description_${tableCountValue}]`;
-		tagLabelContentDescription.appendChild(tagTextareaContentDescription);
-
-		let tagHintContentDescription = document.createElement('div');
-		tagHintContentDescription.className = 'hint';
-		tagHintContentDescription.innerHTML = fieldDescriptionTableHintContent;
-		tagValueContentDescription.appendChild(tagHintContentDescription);
-	}
-
-	buttonAdd.addEventListener('click', function (e) {
-		e.preventDefault();
-		if (tableCountValue < 0) tableCountValue = 0;
-		tableCountValue++;
-		tableCount.value = tableCountValue;
-		createTable();
-	})
-
-	buttonDel.addEventListener('click', function (e) {
-		e.preventDefault();
-		if (tableCountValue > 1) {
-			tableCountValue--;
-			tableCount.value = tableCountValue;
-			const tableArray = document.querySelectorAll('.start-table');
-			tableArray[tableArray.length - 1].remove();
-		}
-	})
-
-
-
-}
-
-
-checkboxChange();
-checkInputs();
-tabsSwitch();
-changeTable();
+            const inputFileDefault = inputFile.name;
+            const inputTextDefault = inputText.name;
+            
+            this.modal_background_image_file = false;
+            inputFile.name = inputTextDefault;
+            inputText.name = inputFileDefault;
+            inputText.value = '';
+        },
+        setCategory() {
+            this.categoryArr = document.querySelectorAll('#category_name');
+        },
+        changeEmptyChar1(e, table_index) {
+            if (e.target.value === '') {
+                this.group_settings[table_index].filter_characteristic_1 = '—';
+            }
+        },
+        changeEmptyChar2(e, table_index) {
+            if (e.target.value === '') {
+                this.group_settings[table_index].filter_characteristic_2 = '—';
+            }
+        },
+        changeEmptyChar3(e, table_index) {
+            if (e.target.value === '') {
+                this.group_settings[table_index].filter_characteristic_3 = '—';
+            }
+        },
+    },
+    created: function () {
+        let numberBlock = 0;
+        for (let i = 0; i < this.table_count; i++) {
+            numberBlock++;
+            this.group_settings.push({
+                table_name: document.querySelector(`#table_name_${numberBlock}`).value,
+                category_name: document.querySelector(`#category_name_${numberBlock}`).value,
+                filter_characteristic_1: document.querySelector(`#table_${numberBlock}_filter_characteristic_1`).value,
+                filter_characteristic_2: document.querySelector(`#table_${numberBlock}_filter_characteristic_2`).value,
+                filter_characteristic_3: document.querySelector(`#table_${numberBlock}_filter_characteristic_3`).value,
+                table_content: document.querySelector(`#table_content_${numberBlock}`).value,
+                table_description: document.querySelector(`#table_description_${numberBlock}`).value,
+            })
+        }
+        this.setCategory();
+    }
+})

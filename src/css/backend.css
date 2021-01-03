@@ -1,12 +1,117 @@
-.start {
-  padding: 20px;
-}
-
 .s-description {
   color: #555;
   font-size: 15px;
   line-height: 19px;
   margin: 0;
+}
+
+.start-instruction {
+  margin-top: 3px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+.start-instruction__icon {
+  margin-left: -5px !important;
+  opacity: 0.4;
+}
+
+.start-instruction a {
+  color: #aaa;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.start-instruction__message {
+  opacity: 0.7;
+  height: auto !important;
+}
+
+.start-instruction__text {
+  color: inherit;
+  border-bottom: 1px dotted;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.field-group__block {
+  padding-left: 25px;
+  padding-top: 5px;
+}
+
+.bounce-enter-active {
+  -webkit-animation: bounce-in 0.5s;
+  animation: bounce-in 0.5s;
+}
+
+.bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+
+@-webkit-keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-enter-active {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.start {
+  margin-top: 30px;
+}
+
+.start-table-name {
+  margin-bottom: 15px;
+}
+
+.start-table-button-add {
+  float: left;
+}
+
+.start-table-button-del {
+  float: right;
+}
+
+.start-table .field {
+  margin-bottom: 0;
 }
 
 .start .important-message {
@@ -26,7 +131,6 @@
 }
 
 .start .field .value .field-description {
-  display: none;
   color: #888;
   font-size: 14px;
   font-family: inherit;
@@ -35,6 +139,7 @@
 .start .field .value .field-description > p {
   margin: 15px 0 5px 0;
   font-family: inherit;
+  font-size: 12px;
 }
 
 .start .field .value .field-description > h6 {
@@ -51,6 +156,11 @@
 }
 
 .start .field .value .field-description > textarea {
+  height: auto;
+  background-color: #feffe8;
+}
+
+.start .field .value textarea {
   height: auto;
 }
 
@@ -107,9 +217,6 @@
 .sliderStart__tab-button:hover {
   border-bottom: 2px solid #000;
   color: #000;
-  -webkit-transition: color 0.5s ease, border-bottom 0.5s ease;
-  -o-transition: color 0.5s ease, border-bottom 0.5s ease;
-  -moz-transition: color 0.5s ease, border-bottom 0.5s ease;
   transition: color 0.5s ease, border-bottom 0.5s ease;
 }
 
@@ -135,9 +242,6 @@
   position: absolute;
   left: -9000px;
   opacity: 0;
-  -webkit-transition: opacity 0.5s ease;
-  -o-transition: opacity 0.5s ease;
-  -moz-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
 }
 

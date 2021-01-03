@@ -18,7 +18,8 @@ window.addEventListener('load', function () {
         this.colorTheme = props.colorTheme;
 
         this.tableOpen = () => {
-            this.tableLink.addEventListener('click', () => {
+            this.tableLink.addEventListener('click', (e) => {
+                e.preventDefault();
                 this.body.style.overflow = 'hidden';
 
                 if (this.tableSize.className.match(/hide/gi)) {
@@ -150,6 +151,7 @@ window.addEventListener('load', function () {
                         if (inputForm.type !== 'hidden' && !/checbox|submit/.test(inputForm.type)) {
                             if (this.colorTheme.formTextColor) inputForm.style.color = this.colorTheme.formTextColor;
                             if (this.colorTheme.borderColor) inputForm.style.borderColor = this.colorTheme.borderColor;
+                            if (this.colorTheme.formFieldBackground) inputForm.style.backgroundColor = this.colorTheme.formFieldBackground;
                             setBoxShadow(inputForm);
                         }
                         if (elem.type === 'submit') {
@@ -161,6 +163,7 @@ window.addEventListener('load', function () {
                         const textareaForm = elem;
                         if (this.colorTheme.formTextColor) textareaForm.style.color = this.colorTheme.formTextColor;
                         if (this.colorTheme.borderColor) textareaForm.style.borderColor = this.colorTheme.borderColor;
+                        if (this.colorTheme.formFieldBackground) textareaForm.style.backgroundColor = this.colorTheme.formFieldBackground;
                         setBoxShadow(textareaForm);
                     } else {
                         findElem(elem.childNodes);
@@ -369,8 +372,8 @@ window.addEventListener('load', function () {
     new StartWebSiteTableSize({
         tableSizeSelector: '.startwebsite-chosesize',
         tableLinkSelector: '#popup1',
-        maxWidth: '900',
-        borderRadius: true,
+        maxWidth: '700',
+        borderRadius: false,
         colorTheme: {
             basicColor: '',
             hover: 'lightcyan',
@@ -383,12 +386,12 @@ window.addEventListener('load', function () {
             borderColor: ''
         },
         buttonText: 'Send',
-        buttonClass: 'bg-primary text-white',
+        buttonClass: '',
         tableContent: 'heading 1, heading 2, heading 3, heading 4, heading 5; item 1, item 2, item 3, item 4, item 5; item 6, item 7, item 8, item 9, item 10;  item 11, item 12, item 13, item 14, item 15; item 16, item 17, item 18, item 19, item 20; item 21, item 22, item 23, item 24, item 25;', // 
         columnAccent: '1',
         tableDescription: true,
         tableForm: true,
-        infoContentCollapse: false
+        infoContentCollapse: true
     });
 
 })
