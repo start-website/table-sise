@@ -2,7 +2,7 @@
 
 const path = require('path'),
     gulp = require('gulp'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-sass')(require('sass')),
     autoprefixer = require('autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
     browserSync = require('browser-sync'),

@@ -264,6 +264,17 @@ window.addEventListener('load', function () {
 
         this.setAJAXform = () => {
             const modalQuestionArray = document.querySelectorAll('.startwebsite-chosesize__question');
+            const policyInput = document.querySelector('.startwebsite-chosesize__policy-input');
+            const policyError = document.querySelector('.startwebsite-chosesize__policy-text_error');
+
+            policyInput.addEventListener('change', (e) => {
+                console.log(policyInput)
+                if (!policyInput.checked) {
+                    policyError.style.display = 'block';
+                } else {
+                    policyError.style.display = 'none';
+                }
+            })
 
             for (let i = 0; i < modalQuestionArray.length; i++) {
                 if (modalQuestionArray[i].getAttribute('data-question') === 'form') {
@@ -274,6 +285,14 @@ window.addEventListener('load', function () {
                                 const form = elem;
                                 form.addEventListener('submit', (e) => {
                                     const url = location.href;
+  
+                                    if (policyInput) {
+                                        if (!policyInput.checked) {                                            
+                                            e.preventDefault()
+                                            return
+                                        }
+                                    }
+
                                     let formData = new FormData(form);
                                     let xhr = new XMLHttpRequest();
                                     xhr.open('POST', url);

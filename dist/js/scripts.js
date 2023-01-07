@@ -2099,6 +2099,17 @@ window.addEventListener('load', function () {
 
     this.setAJAXform = function () {
       var modalQuestionArray = document.querySelectorAll('.startwebsite-chosesize__question');
+      var policyInput = document.querySelector('.startwebsite-chosesize__policy-input');
+      var policyError = document.querySelector('.startwebsite-chosesize__policy-text_error');
+      policyInput.addEventListener('change', function (e) {
+        console.log(policyInput);
+
+        if (!policyInput.checked) {
+          policyError.style.display = 'block';
+        } else {
+          policyError.style.display = 'none';
+        }
+      });
 
       for (var i = 0; i < modalQuestionArray.length; i++) {
         if (modalQuestionArray[i].getAttribute('data-question') === 'form') {
@@ -2109,6 +2120,14 @@ window.addEventListener('load', function () {
                   var form = elem;
                   form.addEventListener('submit', function (e) {
                     var url = location.href;
+
+                    if (policyInput) {
+                      if (!policyInput.checked) {
+                        e.preventDefault();
+                        return;
+                      }
+                    }
+
                     var formData = new FormData(form);
                     var xhr = new XMLHttpRequest();
                     xhr.open('POST', url);

@@ -17,7 +17,7 @@ body {
   font-display: block;
 }
 
-[class^="startwebsite-icon-"],
+[class^=startwebsite-icon-],
 [class*=" startwebsite-icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "startwebsite-chosesize" !important;
@@ -339,7 +339,7 @@ body {
   max-width: 300px;
 }
 
-.startwebsite-chosesize__answer > form input[type="submit"] {
+.startwebsite-chosesize__answer > form input[type=submit] {
   cursor: pointer;
   width: auto;
   padding: 5px 30px;
@@ -347,7 +347,7 @@ body {
   max-width: 100%;
 }
 
-.startwebsite-chosesize__answer > form input[type="checkbox"] {
+.startwebsite-chosesize__answer > form input[type=checkbox] {
   display: inline-block;
   vertical-align: top;
   width: 20px;
@@ -449,6 +449,13 @@ body {
   text-align: left;
   vertical-align: middle;
   white-space: normal;
+}
+
+.startwebsite-chosesize__policy-text_error {
+  color: red !important;
+  display: none;
+  margin-top: 3px;
+  font-weight: bold;
 }
 
 .startwebsite-chosesize__policy-link {
@@ -618,7 +625,7 @@ body {
 }
 
 @media (max-width: 500px) {
-  .startwebsite-chosesize__answer > form input[type="submit"] {
+  .startwebsite-chosesize__answer > form input[type=submit] {
     width: 100%;
   }
 }
@@ -631,18 +638,18 @@ body {
 
 @media (min-width: 320px) and (max-width: 1360px) {
   .startwebsite-chosesize__close_icon {
-    font-size: calc(0.00288 * 100vw + 13.07692px);
+    font-size: calc(0.0028846154 * 100vw + 13.0769230769px);
   }
 
   .startwebsite-chosesize__title_text {
-    font-size: calc(0.00385 * 100vw + 18.76923px);
+    font-size: calc(0.0038461538 * 100vw + 18.7692307692px);
   }
 
   .startwebsite-chosesize__question_text {
-    font-size: calc(0.00192 * 100vw + 13.38462px);
+    font-size: calc(0.0019230769 * 100vw + 13.3846153846px);
   }
 
   .startwebsite-chosesize__answer > h6 {
-    font-size: calc(0.00096 * 100vw + 13.69231px);
+    font-size: calc(0.0009615385 * 100vw + 13.6923076923px);
   }
 }

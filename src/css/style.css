@@ -14,8 +14,7 @@ body {
   font-style: normal;
   font-display: block;
 }
-
-[class^="startwebsite-icon-"],
+[class^=startwebsite-icon-],
 [class*=" startwebsite-icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "startwebsite-chosesize" !important;
@@ -49,7 +48,6 @@ body {
   visibility: hidden !important;
   transition: visibility 0.6s ease-in, opacity 0.7s;
 }
-
 .startwebsite-chosesize.hide .startwebsite-chosesize__modal {
   animation: fade-out-bck 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
@@ -61,11 +59,9 @@ body {
   cursor: pointer;
   display: inline-block;
 }
-
 .startwebsite__table-size:hover .startwebsite__table-size_icon {
   transform: rotate(15deg);
 }
-
 .startwebsite__table-size_icon {
   font-size: 20px;
   display: inline-block;
@@ -76,14 +72,12 @@ body {
   margin-bottom: 1px;
   color: #000;
 }
-
 .startwebsite__table-size_link {
   display: inline-block;
   vertical-align: baseline;
   padding: 0;
   margin: 0;
 }
-
 .startwebsite__table-size_link:hover {
   text-decoration: none;
 }
@@ -114,21 +108,18 @@ body {
   /* @subsection placeholder */
   /* @subsection placeholder при нажатие */
 }
-
 .startwebsite-chosesize:before {
   display: inline-block;
   height: 100%;
   vertical-align: middle;
   content: "";
 }
-
 .startwebsite-chosesize.active {
   visibility: visible;
   opacity: 1;
   height: auto;
   width: 100%;
 }
-
 .startwebsite-chosesize__bg {
   position: fixed;
   right: 0;
@@ -138,7 +129,6 @@ body {
   background-color: #000;
   opacity: 0.5;
 }
-
 .startwebsite-chosesize__modal {
   position: relative;
   max-width: 800px;
@@ -155,13 +145,11 @@ body {
   margin: 20px;
   box-shadow: 0 1px 16px rgba(0, 0, 0, 0.25);
 }
-
 .startwebsite-chosesize__close {
   position: absolute;
   right: 1px;
   top: 2px;
 }
-
 .startwebsite-chosesize__close_icon {
   width: 25px;
   height: 25px;
@@ -175,28 +163,23 @@ body {
   text-align: center;
   transition: opacity 0.3s;
 }
-
 @media (min-width: 320px) and (max-width: 1360px) {
   .startwebsite-chosesize__close_icon {
-    font-size: calc(0.00288 * 100vw + 13.07692px);
+    font-size: calc(0.0028846154 * 100vw + 13.0769230769px);
   }
 }
-
 .startwebsite-chosesize__close_icon:hover {
   opacity: 0.5;
 }
-
 .startwebsite-chosesize__header {
   border-bottom: 3px solid #e5e5e5;
   margin: 0 -30px;
   padding: 0 30px 25px 30px;
 }
-
 .startwebsite-chosesize__title {
   display: inline-block;
   vertical-align: top;
 }
-
 .startwebsite-chosesize__title_text {
   font-size: 24px;
   font-weight: 700;
@@ -206,25 +189,21 @@ body {
   padding: 0;
   color: inherit;
 }
-
 @media (min-width: 320px) and (max-width: 1360px) {
   .startwebsite-chosesize__title_text {
-    font-size: calc(0.00385 * 100vw + 18.76923px);
+    font-size: calc(0.0038461538 * 100vw + 18.7692307692px);
   }
 }
-
 .startwebsite-chosesize__question {
   margin-top: 25px;
   position: relative;
   overflow: hidden;
 }
-
 .startwebsite-chosesize__question_icon {
   display: inline-block;
   width: 20px;
   text-align: left;
 }
-
 .startwebsite-chosesize__question_text {
   border-bottom: 2px solid #e5e5e5;
   padding: 0 0 10px 0;
@@ -234,13 +213,11 @@ body {
   text-transform: uppercase;
   line-height: 1.1;
 }
-
 @media (min-width: 320px) and (max-width: 1360px) {
   .startwebsite-chosesize__question_text {
-    font-size: calc(0.00192 * 100vw + 13.38462px);
+    font-size: calc(0.0019230769 * 100vw + 13.3846153846px);
   }
 }
-
 .startwebsite-chosesize__answer {
   padding: 10px 25px 0 25px;
   height: 0;
@@ -249,13 +226,11 @@ body {
   opacity: 0;
   transition: opacity 0.7s ease-in-out;
 }
-
 @media (max-width: 400px) {
   .startwebsite-chosesize__answer {
     padding: 10px;
   }
 }
-
 .startwebsite-chosesize__answer > h6 {
   font-size: 15px;
   text-align: left;
@@ -263,23 +238,19 @@ body {
   margin-top: 40px;
   color: inherit;
 }
-
 @media (min-width: 320px) and (max-width: 1360px) {
   .startwebsite-chosesize__answer > h6 {
-    font-size: calc(0.00096 * 100vw + 13.69231px);
+    font-size: calc(0.0009615385 * 100vw + 13.6923076923px);
   }
 }
-
 .startwebsite-chosesize__answer > h6:first-child {
   margin-top: 10px;
 }
-
 .startwebsite-chosesize__answer > ul {
   padding-left: 0;
   margin-left: 18.5px;
   margin-bottom: 15px;
 }
-
 .startwebsite-chosesize__answer > ul li {
   list-style-image: url("../images/icon-check.png");
   font-size: 13px;
@@ -287,55 +258,46 @@ body {
   margin-bottom: 5px;
   color: inherit;
 }
-
 .startwebsite-chosesize__answer > ol {
   padding-left: 0;
   margin-left: 15px;
   margin-bottom: 15px;
 }
-
 .startwebsite-chosesize__answer > ol li {
   font-size: 13px;
   line-height: 1.3;
   margin-bottom: 5px;
   color: inherit;
 }
-
 .startwebsite-chosesize__answer > img {
   max-width: 200px;
   width: 100%;
   margin: 0 auto 20px auto;
   display: block;
 }
-
 .startwebsite-chosesize__answer > p {
   font-size: 13px;
   line-height: 1.3;
   margin-bottom: 15px;
   color: inherit;
 }
-
 .startwebsite-chosesize__answer > strong {
   font-weight: 700;
   color: inherit;
 }
-
 .startwebsite-chosesize__answer .form-blur {
   opacity: 0.3;
   filter: blur(5px);
 }
-
 .startwebsite-chosesize__answer .wa-form {
   float: unset;
   margin: 0;
 }
-
 .startwebsite-chosesize__answer > form {
   font-size: 13px;
   position: relative;
   z-index: 0;
 }
-
 .startwebsite-chosesize__answer > form input,
 .startwebsite-chosesize__answer > form textarea {
   display: block;
@@ -349,7 +311,6 @@ body {
   width: 100%;
   box-sizing: border-box;
 }
-
 .startwebsite-chosesize__answer > form input:focus,
 .startwebsite-chosesize__answer > form textarea:focus {
   color: #495057;
@@ -358,42 +319,35 @@ body {
   outline: 0;
   box-shadow: 0 0 0 3px rgba(133, 133, 133, 0.25);
 }
-
 .startwebsite-chosesize__answer > form input {
   max-width: 300px;
 }
-
-.startwebsite-chosesize__answer > form input[type="submit"] {
+.startwebsite-chosesize__answer > form input[type=submit] {
   cursor: pointer;
   width: auto;
   padding: 5px 30px;
   line-height: 1.3;
   max-width: 100%;
 }
-
 @media (max-width: 500px) {
-  .startwebsite-chosesize__answer > form input[type="submit"] {
+  .startwebsite-chosesize__answer > form input[type=submit] {
     width: 100%;
   }
 }
-
-.startwebsite-chosesize__answer > form input[type="checkbox"] {
+.startwebsite-chosesize__answer > form input[type=checkbox] {
   display: inline-block;
   vertical-align: top;
   width: 20px;
   height: 13px;
   margin: 3px 3px 0 0;
 }
-
 .startwebsite-chosesize__answer > form label {
   margin: 0 0 5px 0;
   display: block;
 }
-
 .startwebsite-chosesize__answer > form textarea {
   min-height: 100px;
 }
-
 .startwebsite-chosesize__answer > form > button {
   background-color: #000;
   color: #fff;
@@ -409,35 +363,29 @@ body {
   line-height: 1;
   white-space: nowrap;
 }
-
 .startwebsite-chosesize__answer-active {
   height: auto;
   visibility: visible;
   position: relative;
   opacity: 1;
 }
-
 .startwebsite-chosesize__table {
   margin-bottom: 50px;
 }
-
 .startwebsite-chosesize__table-content {
   white-space: nowrap;
   overflow-x: auto;
   width: 100%;
 }
-
 .startwebsite-chosesize__tr {
   transition: background-color 0.2s;
   border-bottom: 1px solid #e5e5e5;
 }
-
 .startwebsite-chosesize__tr_header {
   position: sticky;
   top: 0;
   font-weight: 700;
 }
-
 .startwebsite-chosesize__td {
   display: inline-block;
   vertical-align: middle;
@@ -447,11 +395,9 @@ body {
   white-space: nowrap;
   transition: background-color 0.2s ease;
 }
-
 .startwebsite-chosesize__td:first-child {
   margin-left: 0;
 }
-
 .startwebsite-chosesize__td_text {
   text-align: center;
   font-size: 13px;
@@ -460,15 +406,12 @@ body {
   line-height: 1.2;
   padding: 0 5px;
 }
-
 .startwebsite-chosesize__td_accent {
   font-weight: 700;
 }
-
 .startwebsite-chosesize__policy-block {
   white-space: nowrap;
 }
-
 .startwebsite-chosesize__policy-text {
   color: inherit !important;
   font-size: inherit;
@@ -479,13 +422,17 @@ body {
   vertical-align: middle;
   white-space: normal;
 }
-
+.startwebsite-chosesize__policy-text_error {
+  color: red !important;
+  display: none;
+  margin-top: 3px;
+  font-weight: bold;
+}
 .startwebsite-chosesize__policy-link {
   color: inherit !important;
   font-size: inherit;
   text-decoration: underline;
 }
-
 .startwebsite-chosesize__form-response {
   position: absolute;
   left: 20000px;
@@ -498,90 +445,73 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease, filter 0.5s ease;
 }
-
 .startwebsite-chosesize__form-response_active {
   left: 30px;
   visibility: visible;
   opacity: 1;
 }
-
 .startwebsite-chosesize input::-webkit-input-placeholder {
   color: inherit;
   text-overflow: ellipsis;
 }
-
 .startwebsite-chosesize input::-moz-placeholder {
   /* Firefox 19+ */
   color: inherit;
   text-overflow: ellipsis;
 }
-
 .startwebsite-chosesize input:-moz-placeholder {
   /* Firefox 18- */
   color: inherit;
   text-overflow: ellipsis;
 }
-
 .startwebsite-chosesize input:ms-placeholder {
   color: inherit;
   text-overflow: ellipsis;
 }
-
 .startwebsite-chosesize textarea::-webkit-input-placeholder {
   color: inherit;
   text-overflow: ellipsis;
 }
-
 .startwebsite-chosesize textarea::-moz-placeholder {
   /* Firefox 19+ */
   color: inherit;
   text-overflow: ellipsis;
   line-height: 100px;
 }
-
 .startwebsite-chosesize textarea:-moz-placeholder {
   /* Firefox 18- */
   color: inherit;
   text-overflow: ellipsis;
 }
-
 .startwebsite-chosesize textarea:ms-placeholder {
   color: inherit;
   text-overflow: ellipsis;
 }
-
 .startwebsite-chosesize input:focus::-webkit-input-placeholder {
   color: transparent;
 }
-
 .startwebsite-chosesize input:focus::-moz-placeholder {
   /* Firefox 19+ */
   color: transparent;
 }
-
 .startwebsite-chosesize input:focus:-moz-placeholder {
   /* Firefox 18- */
   color: transparent;
 }
-
 .startwebsite-chosesize input:focus:ms-placeholder {
   color: transparent;
 }
-
 .startwebsite-chosesize textarea:focus::-webkit-input-placeholder {
   color: transparent;
 }
-
 .startwebsite-chosesize textarea:focus::-moz-placeholder {
   /* Firefox 19+ */
   color: transparent;
 }
-
 .startwebsite-chosesize textarea:focus:-moz-placeholder {
   /* Firefox 18- */
   color: transparent;
 }
-
 .startwebsite-chosesize textarea:focus:ms-placeholder {
   color: transparent;
 }
@@ -601,7 +531,6 @@ body {
     opacity: 1;
   }
 }
-
 /**
  * ----------------------------------------
  * animation fade-out-bck
@@ -617,5 +546,4 @@ body {
     opacity: 0;
   }
 }
-
 /*# sourceMappingURL=style.css.map */

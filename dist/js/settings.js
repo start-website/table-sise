@@ -1843,6 +1843,7 @@ var app = new Vue({
         filter_characteristic_1: '—',
         filter_characteristic_2: '—',
         filter_characteristic_3: '—',
+        filter_characteristic_4: '',
         table_content: '',
         table_description: ''
       });
@@ -1959,8 +1960,10 @@ var app = new Vue({
         filter_characteristic_1: document.querySelector("#table_".concat(numberBlock, "_filter_characteristic_1")).value,
         filter_characteristic_2: document.querySelector("#table_".concat(numberBlock, "_filter_characteristic_2")).value,
         filter_characteristic_3: document.querySelector("#table_".concat(numberBlock, "_filter_characteristic_3")).value,
+        filter_characteristic_4: document.querySelector("#table_".concat(numberBlock, "_filter_characteristic_4")).value,
         table_content: document.querySelector("#table_content_".concat(numberBlock)).value,
-        table_description: document.querySelector("#table_description_".concat(numberBlock)).value
+        table_description: document.querySelector("#table_description_".concat(numberBlock)).value,
+        table_comment: document.querySelector("#table_comment_".concat(numberBlock)).value
       });
     }
 

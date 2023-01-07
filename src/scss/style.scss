@@ -476,6 +476,13 @@ body {
         text-align: left;
         vertical-align: middle;
         white-space: normal;
+
+        &_error {
+            color: red !important;
+            display: none;
+            margin-top: 3px;
+            font-weight: bold;
+        }
     }
 
     &__policy-link {

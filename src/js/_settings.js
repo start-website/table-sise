@@ -39,7 +39,7 @@ var app = new Vue({
         form_tel_show: document.querySelector('#form_tel_show').value,
         form_tel_required: document.querySelector('#form_tel_required').value,
         form_message_show: document.querySelector('#form_message_show').value,
-        form_message_required: document.querySelector('#form_message_required').value,
+        form_message_required: document.querySelector('#form_message_required').value
     },
     methods: {
         addBlock() {
@@ -50,6 +50,7 @@ var app = new Vue({
                 filter_characteristic_1: '—',
                 filter_characteristic_2: '—',
                 filter_characteristic_3: '—',
+                filter_characteristic_4: '',
                 table_content: '',
                 table_description: '',
             })
@@ -65,7 +66,7 @@ var app = new Vue({
             const inputBlockChilds = input.parentElement.parentElement.children;
             const buttonSubmit = document.querySelector('.buttom-sumbit');
             const hexRegexp = /^#([\da-f]{3}){1,2}$/i;
-
+  
             let hintError;
     
             for (let i = 0; i < inputBlockChilds.length; i++) {
@@ -75,7 +76,7 @@ var app = new Vue({
                     hintError = elem;
                 }
             }
-
+  
             if (!hexRegexp.test(e.target.value) && e.target.value != '') {
                 hintError.style.display = 'block';
                 buttonSubmit.disabled = true;
@@ -130,7 +131,7 @@ var app = new Vue({
         delModalImage(e) {
             const inputFile = document.querySelector('#modal_background_image_input_file');
             const inputText = document.querySelector('#modal_background_image_input_text');
-
+  
             const inputFileDefault = inputFile.name;
             const inputTextDefault = inputText.name;
             
@@ -168,10 +169,12 @@ var app = new Vue({
                 filter_characteristic_1: document.querySelector(`#table_${numberBlock}_filter_characteristic_1`).value,
                 filter_characteristic_2: document.querySelector(`#table_${numberBlock}_filter_characteristic_2`).value,
                 filter_characteristic_3: document.querySelector(`#table_${numberBlock}_filter_characteristic_3`).value,
+                filter_characteristic_4: document.querySelector(`#table_${numberBlock}_filter_characteristic_4`).value,
                 table_content: document.querySelector(`#table_content_${numberBlock}`).value,
                 table_description: document.querySelector(`#table_description_${numberBlock}`).value,
+                table_comment: document.querySelector(`#table_comment_${numberBlock}`).value,
             })
         }
         this.setCategory();
     }
-})
+  })
